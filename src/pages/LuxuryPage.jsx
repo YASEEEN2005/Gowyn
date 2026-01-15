@@ -2,10 +2,14 @@ import Footer from "../componets/Footer";
 import Hero from "../componets/luxury/Hero";
 import Navbar from "../componets/luxury/Navbar";
 import ResortCollection from "../componets/luxury/ResortCollection";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function LuxuryPage() {
       const [searchTerm, setSearchTerm] = useState("");
+      useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
+
     return <div>
         
   

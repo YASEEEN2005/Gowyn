@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaMapMarkerAlt, FaTimes } from "react-icons/fa";
+import { useEffect, useRef } from "react";
 
 /* ================= RESORT DATA ================= */
 const resorts = [
@@ -400,6 +401,21 @@ function ResortModal({ resort, onClose }) {
 export default function ResortCollection({ searchTerm = "" }) {
   const [selected, setSelected] = useState(null);
 
+  const didScroll = useRef(false);
+
+useEffect(() => {
+  if (searchTerm.trim() !== "" && !didScroll.current) {
+    didScroll.current = true;
+    document
+      .getElementById("resorts")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  if (searchTerm.trim() === "") {
+    didScroll.current = false;
+  }
+}, [searchTerm]);
+
   const filteredResorts =
     searchTerm.trim() === ""
       ? resorts
@@ -414,6 +430,14 @@ export default function ResortCollection({ searchTerm = "" }) {
 
   return (
     <section id="resorts" className="py-32 bg-gray-50">
+              <div className="text-center mb-20">
+          <h2 className="font-playfair text-4xl md:text-5xl font-semibold">
+            Our Resort Collection
+          </h2>
+          <p className="text-gray-500 mt-3">
+          Luxury escapes & budget-friendly comfort
+          </p>
+        </div>
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredResorts.map((r, i) => (
           <motion.div
