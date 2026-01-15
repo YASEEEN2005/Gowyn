@@ -58,19 +58,25 @@ export default function Navbar({ setSearchTerm }) {
           </div>
 
           {/* ================= DESKTOP MENU ================= */}
-          <nav className="hidden md:flex gap-10 items-center">
-            {["home", "services", "about", "contact"].map((id) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                className={`relative font-medium ${
-                  scrolled ? "text-black" : "text-white"
-                } after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#c9a24d] after:transition-all hover:after:w-full`}
-              >
-                {id.charAt(0).toUpperCase() + id.slice(1)}
-              </a>
-            ))}
-          </nav>
+<nav className="hidden md:flex gap-10 items-center">
+  {[
+    { label: "Home", href: "/" },
+    { label: "Services", href: "#resorts" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ].map(({ label, href }) => (
+    <a
+      key={label}
+      href={href}
+      className={`relative font-medium ${
+        scrolled ? "text-black" : "text-white"
+      } after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#c9a24d] after:transition-all hover:after:w-full`}
+    >
+      {label}
+    </a>
+  ))}
+</nav>
+
 
           {/* ================= MOBILE ICONS ================= */}
           <div className="flex items-center gap-4 md:hidden">

@@ -2,10 +2,14 @@ import Cabs from "../componets/Cab/cabs";
 import Hero from "../componets/Cab/Hero";
 import Footer from "../componets/Footer";
 import Navbar from "../componets/luxury/Navbar";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function CabPage() {
 const [searchTerm, setSearchTerm] = useState("");
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
+
     return (
         <div>
            <Navbar setSearchTerm={setSearchTerm} />
