@@ -80,7 +80,7 @@ export default function HeroSection() {
           <button
             onClick={() =>
               document
-                .getElementById("services")
+                .getElementById("contact")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
             className="px-10 py-4 bg-black/80 hover:bg-black transition rounded-full backdrop-blur-md shadow-lg"
@@ -91,7 +91,7 @@ export default function HeroSection() {
           <button
             onClick={() =>
               document
-                .getElementById("contact")
+                .getElementById("services")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
             className="px-10 py-4 bg-white text-black hover:bg-gray-100 transition rounded-full shadow-lg"
