@@ -32,14 +32,9 @@ export default function Navbar({ setSearchTerm }) {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-
           {/* LOGO */}
           <div className="flex items-center gap-3 text-2xl font-semibold">
-            <img
-              src="/images/gowyn[1].png"
-              className="h-11"
-              alt="Gowyn"
-            />
+            <img src="/images/gowyn[1].png" className="h-11" alt="Gowyn" />
             <span className={scrolled ? "text-black" : "text-white"}>
               Gowyn
             </span>
@@ -51,11 +46,12 @@ export default function Navbar({ setSearchTerm }) {
               type="text"
               placeholder="Search resorts..."
               onFocus={scrollToResorts}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                scrollToResorts();
+              }}
               className={`w-full rounded-full px-5 py-2 text-sm focus:outline-none ${
-                scrolled
-                  ? "bg-gray-100 text-black"
-                  : "bg-white/90 text-black"
+                scrolled ? "bg-gray-100 text-black" : "bg-white/90 text-black"
               }`}
             />
             <FaSearch className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-600" />
@@ -74,7 +70,6 @@ export default function Navbar({ setSearchTerm }) {
                 {id.charAt(0).toUpperCase() + id.slice(1)}
               </a>
             ))}
-
           </nav>
 
           {/* ================= MOBILE ICONS ================= */}
@@ -125,11 +120,7 @@ export default function Navbar({ setSearchTerm }) {
       {menuOpen && (
         <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-6 text-xl">
           {["home", "services", "about", "contact"].map((id) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              onClick={() => setMenuOpen(false)}
-            >
+            <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>
               {id.charAt(0).toUpperCase() + id.slice(1)}
             </a>
           ))}

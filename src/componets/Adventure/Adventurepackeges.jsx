@@ -3,67 +3,55 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaMapMarkerAlt, FaTimes } from "react-icons/fa";
 
 /* ================= DATA ================= */
-const packages = [
+const adventures = [
   {
-    title: "Standard package",
+    title: "Forest Camping",
     location: "Wayanad",
-    desc: "Two hearts. One perfect escape.",
-    desc1:
-      "candlelight dinner, glass bridge visit, zipline ticket, semi off road jeep safari, pool with private time.",
-    price: "₹12,000 / couple",
-    image: "/images/84.jpg",
+    desc: "off road jeep safari, tea plantation walk, private water fall.",
+    image: "/images/1,1.png",
     images: [
-      "/images/30.jpeg",
-      "/images/glass bridge.png",
-      "/images/zipline.png",
-      "/images/33.jpeg",
-      "/images/80.png",
-      "/images/26.jpeg",
-      "/images/85.jpeg",
+      "/images/47.jpeg",
+      "/images/48.jpeg",
+      "/images/50.jpeg",
+      "/images/106.png",
+
     ],
-},
+  },
   {
-    title: "Deluxe package",
+    title: "Camping site with pool",
     location: "Wayanad",
-    desc: "An indulgence called love.",
-    desc1:
-      "candlelight dinner, glass bridge visit, zipline ticket, semi off road jeep safari, pool with private time.",
-    price: "₹15,000 / couple",
-    image: "/images/83.jpg",
+    desc: "plantation walk, Chembra peak safari.",
+    image: "/images/1,2.png",
 images: [
-  "/images/tree vally.jpeg",
-  "/images/24.jpeg",
-  "/images/glass bridge.png",
-  "/images/zipline.png",
-  "/images/80.png",
-  "/images/26.jpeg",
-  "/images/85.jpg",
+  "/images/penta hut.jpeg",
+  "/images/4.jpeg",
+  "/images/3,1.jpeg",
+  "/images/43.jpeg",
+  "/images/42.jpeg",
+  "/images/5.jpeg",
+  "/images/3,2.jpeg",
+  "/images/3,3.jpeg",
+  "/images/3,4.jpeg",
 ]
 ,
   },
   {
-    title: "Premium package",
+    title: "Forest Camping",
     location: "Wayanad",
-    desc: "Where romance meets royalty.",
-    desc1:
-      "private pool villa, floating breakfast, candlelight dinner, glass bridge ticket, zipline ticket, off road jeep safari.",
-    price: "₹25,999 / couple",
-    image: "/images/82.jpg",
-images: [
-  "/images/Amakila.jpeg",
-  "/images/52.jpeg",
-  "/images/glass-bridge.png",
-  "/images/zipline.png",
-  "/images/80.png",
-  "/images/55.jpeg",
-  "/images/85.jpg",
-]
-,
+    desc: "off road jeep safari, pool, camp fire with music.",
+    image: "/images/1,3.png",
+    images: [
+      "/images/100.jpeg",
+      "/images/102.jpeg",
+      "/images/103.jpeg",
+      "/images/104.jpeg",
+
+    ],
   },
 ];
 
 /* ================= MODAL ================= */
-function DetailsModal({ item, onClose }) {
+function AdventureModal({ item, onClose }) {
   const [activeImage, setActiveImage] = useState(item.images[0]);
   const [showBooking, setShowBooking] = useState(false);
 
@@ -72,7 +60,9 @@ function DetailsModal({ item, onClose }) {
     phone: "",
     checkIn: "",
     checkOut: "",
-    type: "Couple",
+    type: "Couples",
+    members: "",
+    rooms: "",
   });
 
   const handleChange = (e) =>
@@ -80,17 +70,20 @@ function DetailsModal({ item, onClose }) {
 
   const sendWhatsApp = () => {
     const message = `
-💖 Honeymoon Booking Request
+🌲 Adventure Booking Request
 
-🏡 Package: ${item.title}
+🏕 Experience: ${item.title}
 📍 Location: ${item.location}
-💰 Price: ${item.price}
 
 👤 Name: ${form.name}
 📞 Phone: ${form.phone}
+
 📅 Check-in: ${form.checkIn}
 📅 Check-out: ${form.checkOut}
+
 👫 Type: ${form.type}
+👥 Members: ${form.members}
+🛏 Rooms: ${form.rooms}
     `.trim();
 
     window.open(
@@ -102,7 +95,7 @@ function DetailsModal({ item, onClose }) {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-black/70 backdrop-blur z-50 flex items-center justify-center px-4"
+        className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -123,17 +116,13 @@ function DetailsModal({ item, onClose }) {
           </button>
 
           <div className="grid md:grid-cols-2 gap-6 p-6 max-h-[90vh] overflow-y-auto">
-            {/* LEFT IMAGES */}
+            {/* IMAGES */}
             <div>
               <motion.img
                 key={activeImage}
                 src={activeImage}
                 className="w-full h-64 object-cover rounded-2xl"
-                initial={{ opacity: 0.6, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
               />
-
               <div className="flex gap-2 mt-4 overflow-x-auto">
                 {item.images.map((img, i) => (
                   <img
@@ -150,7 +139,7 @@ function DetailsModal({ item, onClose }) {
               </div>
             </div>
 
-            {/* RIGHT CONTENT */}
+            {/* CONTENT */}
             {!showBooking ? (
               <div>
                 <h3 className="text-2xl font-semibold">
@@ -163,11 +152,7 @@ function DetailsModal({ item, onClose }) {
                 </p>
 
                 <p className="text-gray-600 mt-3">
-                  {item.desc1}
-                </p>
-
-                <p className="text-amber-600 font-semibold text-lg mt-4">
-                  {item.price}
+                  {item.desc}
                 </p>
 
                 <button
@@ -188,11 +173,11 @@ function DetailsModal({ item, onClose }) {
                   ["Phone", "phone"],
                   ["Check-in Date", "checkIn", "date"],
                   ["Check-out Date", "checkOut", "date"],
+                  ["Total Members", "members"],
+                  ["Rooms", "rooms"],
                 ].map(([label, name, type]) => (
                   <div key={name} className="mb-3">
-                    <label className="text-sm font-medium">
-                      {label}
-                    </label>
+                    <label className="text-sm font-medium">{label}</label>
                     <input
                       type={type || "text"}
                       name={name}
@@ -201,20 +186,6 @@ function DetailsModal({ item, onClose }) {
                     />
                   </div>
                 ))}
-
-                <div className="mb-3">
-                  <label className="text-sm font-medium">
-                    Package Type
-                  </label>
-                  <select
-                    name="type"
-                    onChange={handleChange}
-                    className="w-full mt-1 px-4 py-2 border rounded-xl"
-                  >
-                    <option>Couple</option>
-                    <option>Family</option>
-                  </select>
-                </div>
 
                 <button
                   onClick={sendWhatsApp}
@@ -232,19 +203,19 @@ function DetailsModal({ item, onClose }) {
 }
 
 /* ================= PAGE ================= */
-export default function HoneymoonPackeges({ searchTerm = "" }) {
+export default function Adventurepackeges({ searchTerm = "" }) {
   const [selected, setSelected] = useState(null);
 
   /* SEARCH FILTER */
-  const filteredPackages =
+  const filteredAdventures =
     searchTerm.trim() === ""
-      ? packages
-      : packages.filter((p) => {
+      ? adventures
+      : adventures.filter((a) => {
           const q = searchTerm.toLowerCase();
           return (
-            p.title.toLowerCase().includes(q) ||
-            p.location.toLowerCase().includes(q) ||
-            p.desc.toLowerCase().includes(q)
+            a.title.toLowerCase().includes(q) ||
+            a.location.toLowerCase().includes(q) ||
+            a.desc.toLowerCase().includes(q)
           );
         });
 
@@ -252,7 +223,7 @@ export default function HoneymoonPackeges({ searchTerm = "" }) {
   useEffect(() => {
     if (searchTerm.trim() !== "") {
       document
-        .getElementById("honeymoon-packages")
+        .getElementById("adventure-packages")
         ?.scrollIntoView({ behavior: "smooth" });
     }
   }, [searchTerm]);
@@ -263,26 +234,23 @@ export default function HoneymoonPackeges({ searchTerm = "" }) {
       className="py-32 bg-gradient-to-b from-gray-100 to-gray-200"
     >
       <div className="max-w-7xl mx-auto px-6">
-        {/* HEADING */}
         <div className="text-center mb-20">
           <h2 className="font-playfair text-4xl md:text-5xl font-semibold">
-            Romantic Getaways
+            Adventure Experiences
           </h2>
           <p className="text-gray-500 mt-3">
-            Handpicked honeymoon experiences
+            Explore the wild with comfort & safety
           </p>
         </div>
 
-        {/* NO RESULTS */}
-        {filteredPackages.length === 0 && (
+        {filteredAdventures.length === 0 && (
           <p className="text-center text-gray-500">
-            No packages found for "{searchTerm}"
+            No adventures found for "{searchTerm}"
           </p>
         )}
 
-        {/* CARDS */}
         <div className="grid md:grid-cols-3 gap-12">
-          {filteredPackages.map((item, i) => (
+          {filteredAdventures.map((item, i) => (
             <motion.div
               key={i}
               whileHover={{ y: -10 }}
@@ -294,7 +262,7 @@ export default function HoneymoonPackeges({ searchTerm = "" }) {
               />
 
               <div className="p-8">
-                <h3 className="text-xl font-semibold">
+                <h3 className="text-2xl font-semibold">
                   {item.title}
                 </h3>
 
@@ -305,10 +273,6 @@ export default function HoneymoonPackeges({ searchTerm = "" }) {
 
                 <p className="text-gray-500 mt-3">
                   {item.desc}
-                </p>
-
-                <p className="text-amber-600 font-semibold mt-4">
-                  {item.price}
                 </p>
 
                 <button
@@ -324,7 +288,7 @@ export default function HoneymoonPackeges({ searchTerm = "" }) {
       </div>
 
       {selected && (
-        <DetailsModal
+        <AdventureModal
           item={selected}
           onClose={() => setSelected(null)}
         />

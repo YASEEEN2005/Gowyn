@@ -253,8 +253,6 @@ const resorts = [
     ],
   },
 ];
-
-
 /* ================= MODAL ================= */
 function ResortModal({ resort, onClose }) {
   const [activeImage, setActiveImage] = useState(resort.images[0]);
@@ -284,10 +282,8 @@ function ResortModal({ resort, onClose }) {
 
 👤 Name: ${form.name}
 📞 Contact: ${form.phone}
-
 📅 Check-in: ${form.checkIn}
 📅 Check-out: ${form.checkOut}
-
 👫 Stay Type: ${form.stayType}
 👥 Total Members: ${form.totalMembers}
 🧑 Adults: ${form.adults}
@@ -295,9 +291,8 @@ function ResortModal({ resort, onClose }) {
 🛏 Rooms Needed: ${form.rooms}
     `.trim();
 
-    const phoneNumber = "919999999999"; // 🔴 change number
     window.open(
-      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
+      `https://wa.me/919999999999?text=${encodeURIComponent(message)}`,
       "_blank"
     );
   };
@@ -305,247 +300,131 @@ function ResortModal({ resort, onClose }) {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center px-4"
+        className="fixed inset-0 bg-black/70 backdrop-blur z-50 flex items-center justify-center px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <motion.div
-          initial={{ scale: 0.92, y: 40, opacity: 0 }}
-          animate={{ scale: 1, y: 0, opacity: 1 }}
-          exit={{ scale: 0.95, y: 30, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 120, damping: 18 }}
-          className="bg-white rounded-[28px] w-full max-w-md max-h-[90vh] overflow-hidden relative shadow-2xl"
-        >
-          {/* CLOSE */}
-          <motion.button
-            whileHover={{ scale: 1.1, rotate: 90 }}
-            whileTap={{ scale: 0.9 }}
+        <motion.div className="bg-white rounded-3xl max-w-md w-full p-4 relative">
+          <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow"
+            className="absolute top-4 right-4 bg-white rounded-full p-2 shadow"
           >
             <FaTimes />
-          </motion.button>
+          </button>
 
-          <div className="overflow-y-auto max-h-[90vh] p-4">
-            {!showBooking ? (
-              <>
-                {/* IMAGE */}
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={activeImage}
-                    src={activeImage}
-                    alt={resort.title}
-                    className="w-full h-56 object-cover rounded-2xl"
-                    initial={{ opacity: 0.5, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
+          {!showBooking ? (
+            <>
+              <img
+                src={activeImage}
+                className="w-full h-56 object-cover rounded-2xl"
+              />
+
+              <div className="flex gap-2 mt-3 overflow-x-auto">
+                {resort.images.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    onClick={() => setActiveImage(img)}
+                    className={`h-14 w-20 rounded-lg cursor-pointer border-2 ${
+                      activeImage === img
+                        ? "border-black"
+                        : "border-transparent"
+                    }`}
                   />
-                </AnimatePresence>
+                ))}
+              </div>
 
-                {/* THUMBNAILS */}
-                <div className="flex gap-2 mt-3 overflow-x-auto pb-2">
-                  {resort.images.map((img, i) => (
-                    <motion.img
-                      key={i}
-                      src={img}
-                      onClick={() => setActiveImage(img)}
-                      whileHover={{ scale: 1.08 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`h-16 w-20 object-cover rounded-xl cursor-pointer border-2 ${
-                        activeImage === img
-                          ? "border-black shadow-md"
-                          : "border-transparent opacity-70"
-                      }`}
-                    />
-                  ))}
+              <h3 className="text-xl font-semibold mt-4">
+                {resort.title}
+              </h3>
+
+              <p className="flex items-center gap-2 text-sm mt-1">
+                <FaMapMarkerAlt className="text-rose-600" />
+                <b>{resort.location}</b>
+              </p>
+
+              <p className="text-sm text-gray-600 mt-3">
+                {resort.desc}
+              </p>
+
+              <button
+                onClick={() => setShowBooking(true)}
+                className="mt-6 w-full bg-black text-white py-3 rounded-full"
+              >
+                Book Now
+              </button>
+            </>
+          ) : (
+            <>
+              <h3 className="text-xl font-semibold mb-4">
+                Booking Details
+              </h3>
+
+              {[
+                ["Full Name","name"],
+                ["Contact Number","phone"],
+                ["Check-in Date","checkIn","date"],
+                ["Check-out Date","checkOut","date"],
+                ["Total Members","totalMembers"],
+                ["Adults","adults"],
+                ["Kids","kids"],
+                ["Rooms Needed","rooms"],
+              ].map(([label,name,type]) => (
+                <div key={name} className="mb-3">
+                  <label className="text-sm font-medium">{label}</label>
+                  <input
+                    type={type || "text"}
+                    name={name}
+                    onChange={handleChange}
+                    className="w-full mt-1 px-4 py-2 border rounded-xl"
+                  />
                 </div>
+              ))}
 
-                {/* DETAILS */}
-                <h3 className="text-xl font-semibold mt-4">
-                  {resort.title}
-                </h3>
-
-                <p className="flex items-center gap-2 text-sm mt-1">
-                  <FaMapMarkerAlt className="text-rose-600" />
-                  <b>{resort.location}</b>
-                </p>
-
-                <p className="text-gray-600 text-sm mt-3">
-                  {resort.desc}
-                </p>
-
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => setShowBooking(true)}
-                  className="mt-6 w-full bg-black text-white py-3 rounded-full shadow-lg"
-                >
-                  Book Now
-                </motion.button>
-              </>
-            ) : (
-              <>
-                <h3 className="text-xl font-semibold mb-4">
-                  Booking Details
-                </h3>
-
-                <div className="space-y-4">
-                  {/* NAME */}
-                  <div>
-                    <label className="label">Full Name</label>
-                    <input
-                      name="name"
-                      onChange={handleChange}
-                      className="input"
-                    />
-                  </div>
-
-                  {/* PHONE */}
-                  <div>
-                    <label className="label">Contact Number</label>
-                    <input
-                      name="phone"
-                      onChange={handleChange}
-                      className="input"
-                    />
-                  </div>
-
-                  {/* CHECK-IN */}
-                  <div>
-                    <label className="label">Check-in Date</label>
-                    <input
-                      type="date"
-                      name="checkIn"
-                      onChange={handleChange}
-                      className="input"
-                    />
-                  </div>
-
-                  {/* CHECK-OUT */}
-                  <div>
-                    <label className="label">Check-out Date</label>
-                    <input
-                      type="date"
-                      name="checkOut"
-                      onChange={handleChange}
-                      className="input"
-                    />
-                  </div>
-
-                  {/* STAY TYPE */}
-                  <div>
-                    <label className="label">Stay Type</label>
-                    <select
-                      name="stayType"
-                      onChange={handleChange}
-                      className="input"
-                    >
-                      <option>Couples</option>
-                      <option>Family</option>
-                      <option>Group</option>
-                    </select>
-                  </div>
-
-                  {/* TOTAL MEMBERS */}
-                  <div>
-                    <label className="label">Total Members</label>
-                    <input
-                      name="totalMembers"
-                      onChange={handleChange}
-                      className="input"
-                    />
-                  </div>
-
-                  {/* ADULTS */}
-                  <div>
-                    <label className="label">Adults (12+ age)</label>
-                    <input
-                      name="adults"
-                      onChange={handleChange}
-                      className="input"
-                    />
-                  </div>
-
-                  {/* KIDS */}
-                  <div>
-                    <label className="label">Kids (6–12 age)</label>
-                    <input
-                      name="kids"
-                      onChange={handleChange}
-                      className="input"
-                    />
-                  </div>
-
-                  {/* ROOMS */}
-                  <div>
-                    <label className="label">Rooms Needed</label>
-                    <input
-                      name="rooms"
-                      onChange={handleChange}
-                      className="input"
-                    />
-                  </div>
-                </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={sendWhatsApp}
-                  className="mt-6 w-full bg-green-500 text-white py-3 rounded-full shadow-lg"
-                >
-                  Send on WhatsApp
-                </motion.button>
-              </>
-            )}
-          </div>
+              <button
+                onClick={sendWhatsApp}
+                className="mt-4 w-full bg-green-500 text-white py-3 rounded-full"
+              >
+                Send on WhatsApp
+              </button>
+            </>
+          )}
         </motion.div>
-
-        <style>
-          {`
-            .label {
-              font-size: 0.875rem;
-              font-weight: 500;
-              margin-bottom: 6px;
-              display: block;
-            }
-            .input {
-              width: 100%;
-              padding: 12px 16px;
-              border: 1px solid #e5e7eb;
-              border-radius: 14px;
-            }
-          `}
-        </style>
       </motion.div>
     </AnimatePresence>
   );
 }
 
 /* ================= MAIN ================= */
-export default function ResortCollection() {
+export default function ResortCollection({ searchTerm = "" }) {
   const [selected, setSelected] = useState(null);
 
+  const filteredResorts =
+    searchTerm.trim() === ""
+      ? resorts
+      : resorts.filter((r) => {
+          const q = searchTerm.toLowerCase();
+          return (
+            r.title.toLowerCase().includes(q) ||
+            r.location.toLowerCase().includes(q) ||
+            r.subtitle.toLowerCase().includes(q)
+          );
+        });
+
   return (
-    <section className="py-32 bg-gray-50">
+    <section id="resorts" className="py-32 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {resorts.map((r, i) => (
+        {filteredResorts.map((r, i) => (
           <motion.div
             key={i}
             whileHover={{ y: -8 }}
-            transition={{ type: "spring", stiffness: 200 }}
             className="bg-white rounded-3xl shadow overflow-hidden"
           >
-            <img
-              src={r.image}
-              className="h-56 w-full object-cover"
-            />
-
+            <img src={r.image} className="h-56 w-full object-cover" />
             <div className="p-6">
               <h3 className="font-semibold">{r.title}</h3>
               <p className="text-sm text-gray-600">{r.subtitle}</p>
-
               <button
                 onClick={() => setSelected(r)}
                 className="mt-4 bg-black text-white px-6 py-2 rounded-full text-sm"

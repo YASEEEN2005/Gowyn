@@ -14,7 +14,6 @@ function LuxuryPage() {
   <Navbar setSearchTerm={setSearchTerm} />
   <Hero />
       <ResortCollection searchTerm={searchTerm} />
-
      
         <Footer />
     </div>;

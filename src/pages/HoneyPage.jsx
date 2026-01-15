@@ -1,15 +1,20 @@
-import Footer from "../componets/Footer"
-import Hero from "../componets/Honeymoon/Hero"
-import HoneymoonPackages from "../componets/Honeymoon/honeymoonpackeges"
-import Navbar from "../componets/luxury/Navbar"
+import { useState } from "react";
+import Footer from "../componets/Footer";
+import Hero from "../componets/Honeymoon/Hero";
+import HoneymoonPackages from "../componets/Honeymoon/honeymoonpackeges";
+import Navbar from "../componets/luxury/Navbar";
 
 function HoneyPage() {
-    return <div>
-        <Navbar />
-        <Hero />
-        <HoneymoonPackages />
-        <Footer />
-    </div>
-}   
+  const [searchTerm, setSearchTerm] = useState("");
 
-export default HoneyPage
+  return (
+    <div>
+      <Navbar setSearchTerm={setSearchTerm} />
+      <Hero />
+      <HoneymoonPackages searchTerm={searchTerm} />
+      <Footer />
+    </div>
+  );
+}
+
+export default HoneyPage;
