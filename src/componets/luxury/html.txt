@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Luxury & Budget Resorts | Gowyn</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="luxury.css">
+</head>
+
+<body>
+
+<header id="navbar">
+  <div class="logo">
+    <img src="gowyn.png">
+    <span>Gowyn</span>
+  </div>
+
+  <!-- SEARCH BOX -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search resorts...">
+  <i class="fa fa-search"></i>
+</div>
+<!-- MOBILE SEARCH ICON -->
+<div class="mobile-search-icon" id="openMobileSearch">
+  <i class="fa fa-search"></i>
+</div>
+
+
+<!-- MOBILE SEARCH BAR -->
+<div class="mobile-search" id="mobileSearch">
+  <div class="mobile-search-box">
+    <input type="text" id="mobileSearchInput" placeholder="Search resorts...">
+    <span id="closeMobileSearch">&times;</span>
+  </div>
+</div>
+
+  <nav>
+    <a href="Gowyn.html">Home</a>
+    <a href="#services">Services</a>
+    <a href="Gowyn.html#contact">Contact</a>
+  </nav>
+
+  <!-- HAMBURGER -->
+  <div class="menu-toggle" id="menuToggle">☰</div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="Gowyn.html">Home</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+</div>
+
+
+
+<div class="hero">
+  <div>
+    <h1>Luxury & Budget Resorts</h1>
+    <p>Handpicked stays offering comfort, elegance, and unforgettable experiences</p>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-title">
+    <h2>Our Resort Collection</h2>
+    <p>Luxury escapes & budget-friendly comfort</p>
+  </div>
+
+  <div class="resorts">
+<section id="services">
+
+  <div class="resorts">
+<!-- 1 -->
+<div class="resort-card"
+  data-title="1 BHK Glass House Villa"
+  data-location="📍Wayanad"
+  data-desc="Chembra peak view, campfire with music, premium pool & BBQ facility, kids park and outdoor games."
+  data-images='["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg"]'
+>
+  <img src="WILDLOOP.jpeg">
+  <div class="resort-content">
+    <h3>1 BHK Glass House Villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Chembra peak view</p>
+  
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="resort-card"
+  data-title="5 BHK Family Villa"
+  data-location="📍Wayanad"
+  data-desc="Eco-friendly farm villa, infinity pool, kitchen with vessels, prayer hall."
+  data-images='["12.jpeg","13.jpeg","14.jpeg","15.jpeg","16.jpeg","17.jpeg"]'
+>
+  <img src="bean wood.jpeg">
+  <div class="resort-content">
+    <h3>5 BHK Family Villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Eco-friendly farm villa</p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="resort-card"
+  data-title="4 BHK Lake View Villa"
+  data-location="📍Wayanad"
+  data-desc="nfinity pool, Karapuzha lake view, living & dining area, BBQ facility.."
+  data-images='["7.jpeg","8.jpeg","9.jpeg","10.jpeg","11.jpeg"]'
+>
+  <img src="lake view.jpeg">
+  <div class="resort-content">
+    <h3>4 BHK Lake View Villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Karapuzha lake view</p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="resort-card"
+  data-title="Luxury Wooden Cottage"
+  data-location="📍Wayanad"
+  data-desc="Private glass bridge, infinity pool, restaurant, campfire with music."
+  data-images='["24.jpeg","25.jpeg","26.jpeg","27.jpeg","28.jpeg","29.jpeg"]'
+>
+  <img src="tree vally.jpeg">
+  <div class="resort-content">
+    <h3>Luxury Wooden Cottage</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Private glass bridge</p>
+
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="resort-card"
+  data-title="Unique Penta Hut"
+  data-location="📍Wayanad"
+  data-desc="Common washroom, campfire with music, premium pool & BBQ, kids park."
+  data-images='["41.jpeg","42.jpeg","43.jpeg","44.jpeg","5.jpeg","46.jpeg"]'
+>
+  <img src="penta hut.jpeg">
+  <div class="resort-content">
+    <h3>Unique Penta Hut</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Unique eco stay</p>
+  
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="resort-card"
+  data-title="Luxury Glass House Villa"
+  data-location="📍Wayanad"
+  data-desc="Private glass bridge, infinity pool, restaurant, campfire with music."
+  data-images='["34.jpeg","35.jpeg","36.jpeg","37.jpeg","26.jpeg","27.jpeg"]'
+>
+  <img src="glass house.jpeg">
+  <div class="resort-content">
+    <h3>Luxury Glass House Villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Infinity pool & glass bridge</p>
+    
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="resort-card"
+  data-title="2 BHK Premium Villa"
+  data-location="📍Wayanad"
+  data-desc="Premium pool, sunrise mountain view, campfire with music, kitchen facility."
+  data-images='["18.jpeg","19.jpeg","20.jpeg","21.jpeg","22.jpeg","23.jpeg"]'
+>
+  <img src="2BHK villa.jpeg">
+  <div class="resort-content">
+    <h3>2 BHK Premium Villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Sunrise mountain view</p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="resort-card"
+  data-title="Forest Couple Villa"
+  data-location="📍Wayanad"
+  data-desc="Private glass bridge, infinity pool, restaurant, campfire with music."
+  data-images='["30.jpeg","31.jpeg","32.jpeg","33.jpeg","26.jpeg","27.jpeg"]'
+>
+  <img src="clif house.jpeg">
+  <div class="resort-content">
+    <h3>Forest Couple Villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Romantic forest stay</p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+<!-- 9 -->
+<div class="resort-card"
+  data-title="1 BHK Couple villa"
+  data-location="📍Wayanad"
+  data-desc="Eco-friendly farm villa, infinity pool, campfire with music."
+  data-images='["38.jpeg","39.jpeg","40.jpeg","15.jpeg"]'
+>
+  <img src="BEENWOOD VILLA.jpeg">
+  <div class="resort-content">
+    <h3>1 BHK COUPLE Villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Perfect honeymoon getaway</p>
+  
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+<!-- 10 -->
+<div class="resort-card"
+  data-title="mountain View HUT stay"
+  data-location="📍Wayanad"
+  data-desc=" common wash room,off road jeep safari,tea plantation walk,natural pool."
+  data-images='["46.jpeg","47.jpeg","48.jpeg","49.jpeg","50.jpeg"]'
+>
+  <img src="HUT stay.jpeg">
+  <div class="resort-content">
+    <h3>mountain View HUT stay</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>mountain View stay</p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+<!-- 11-->
+<div class="resort-card"
+  data-title="laxury Couple bali type villa"
+  data-location="📍Wayanad"
+  data-desc=" Private pool,floating break fast."
+  data-images='["51.jpeg","52.jpeg","53.jpeg","54.jpeg","55.jpeg","56.jpeg"]'
+>
+  <img src="Amakila.jpeg">
+  <div class="resort-content">
+    <h3>laxury Couple bali type villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Calm & peaceful stay</p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+<!-- 12 -->
+<div class="resort-card"
+  data-title="mountain View jaccuzy villa"
+  data-location="📍Wayanad"
+  data-desc=" mountain view luxury villa."
+  data-images='["57.jpeg","58.jpeg","59.jpeg","60.jpeg","61.jpeg"]'
+>
+  <img src="jaccuzy villa.jpeg">
+  <div class="resort-content">
+    <h3>mountain View jaccuzy villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Calm & peaceful stay</p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+<!-- 13 -->
+<div class="resort-card"
+  data-title="4 BHK pool villa"
+  data-location="📍ooty"
+  data-desc=" premium villa campfire with music."
+  data-images='["62.jpeg","63.jpeg","64.jpeg","65.jpeg","66.jpeg"]'
+>
+  <img src="4 BHK pool villa.jpeg">
+  <div class="resort-content">
+    <h3>4 BHK pool villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>ooty</b></span></p>
+    <p>Calm & peaceful stay</p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+<!-- 14 -->
+<div class="resort-card"
+  data-title="private pool couple villa"
+  data-location="📍Wayanad"
+  data-desc=" mountain view,campfire with music."
+  data-images='["68.jpeg","69.jpeg","70.jpeg","71.jpeg","72.jpeg"]'
+>
+  <img src="private pool couple villa.jpeg">
+  <div class="resort-content">
+    <h3>private pool couple villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Calm & peaceful stay</p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+<!-- 15 -->
+<div class="resort-card"
+  data-title="heritage villa resort"
+  data-location="📍Wayanad"
+  data-desc=" common wash room,off road jeep safari,tea plantation walk,natural pool."
+  data-images='["74.jpeg","75.jpeg","76.jpeg","77.jpeg","78.jpeg"]'
+>
+  <img src="sobanam.jpeg">
+  <div class="resort-content">
+    <h3>heritage villa resort</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>Calm & peaceful stay</p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+<!-- 16 -->
+<div class="resort-card"
+  data-title="Forest villa"
+  data-location="📍Wayanad"
+  data-desc="premium pool , campfire with music."
+  data-images='["86.jpeg","87.jpeg","88.jpeg","89.jpeg","90.jpeg","91.jpeg"]'
+>
+  <img src="87.jpeg">
+  <div class="resort-content">
+    <h3>FOREST VILLA</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>forest ambiance </p>
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+<!-- 17 -->
+<div class="resort-card"
+  data-title="Budget friendly villa"
+  data-location="📍Wayanad"
+  data-desc="Premium pool,Campfire with music."
+  data-images='["93.jpeg","94.jpeg","95.jpeg","96.jpeg","97.jpeg","98.jpeg"]'
+>
+  <img src="92.jpeg">
+  <div class="resort-content">
+    <h3>Budget friendly villa</h3>
+    <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+    <p>forest ambiance</p>
+  
+    <a class="view-btn">View Details</a>
+  </div>
+</div>
+
+
+
+
+
+
+  </div>
+</section>
+  </div>
+</section>
+
+<footer id="contact">
+  © 2026 Gowyn. All Rights Reserved.
+</footer>
+
+<!-- RESORT + BOOKING MODAL -->
+<div class="modal" id="resortModal">
+  <div class="modal-box">
+
+    <span class="close">&times;</span>
+
+    <!-- LEFT: IMAGE GALLERY -->
+    <div class="modal-gallery">
+      <img id="modalMainImage" src="">
+      <div class="thumbs" id="modalThumbs"></div>
+    </div>
+
+    <!-- RIGHT: CONTENT -->
+    <div class="modal-content">
+
+      <!-- RESORT DETAILS -->
+      <div id="resortDetails">
+        <h2 id="modalTitle"></h2>
+        <p id="modalLocation"></p>
+        <p id="modalDesc"></p>
+        <div class="modal-price" id="modalPrice"></div>
+
+     <div class="booking-actions">
+  <button class="view-btn" id="openBooking">Book Now</button>
+
+</div>
+
+      </div>
+
+      <!-- BOOKING FORM -->
+      <div id="bookingForm" style="display:none">
+
+        <h3>Booking Details</h3>
+
+        <input id="bkName" type="text" placeholder="Full Name" required>
+        <input id="bkPhone" type="tel" placeholder="Contact Number" required>
+
+        <label>Check-in Date</label>
+        <input id="bkCheckin" type="date" required>
+
+        <label>Check-out Date</label>
+        <input id="bkCheckout" type="date" required>
+
+        <select id="bkType">
+          <option>Couples</option>
+          <option>Family</option>
+          <option>Bachelors</option>
+        </select>
+
+        <input id="bkMembers" type="number" placeholder="Total Members">
+        <input id="bkAdults" type="number" placeholder="Adults (12+ age)">
+        <input id="bkKids" type="number" placeholder="Kids (6–12 age)">
+        <input id="bkRooms" type="number" placeholder="Rooms Needed">
+
+
+<div class="booking-actions">
+  <button class="view-btn" id="sendWhatsapp">Send on WhatsApp</button>
+</div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- BOOKING MODAL -->
+<div class="modal" id="bookingModal">
+  <div class="modal-box small">
+    <span class="close" id="closeBooking">&times;</span>
+
+    <h2 id="bookingResortName">Book Resort</h2>
+
+    <form id="bookingForm">
+      <input type="text" id="name" placeholder="Name" required>
+      <input type="tel" id="contact" placeholder="Contact Number" required>
+
+      <label>Check-in Date</label>
+      <input type="date" id="checkin" required>
+
+      <label>Check-out Date</label>
+      <input type="date" id="checkout" required>
+
+      <select id="guestType" required>
+        <option value="">Family / Bachelors / Couples</option>
+        <option>Family</option>
+        <option>Bachelors</option>
+        <option>Couples</option>
+      </select>
+
+      <input type="number" id="totalMembers" placeholder="Total Members" required>
+      <input type="number" id="adults" placeholder="Adults (12+)" required>
+      <input type="number" id="kids" placeholder="Kids (6–12)" required>
+      <input type="number" id="rooms" placeholder="Rooms Needed" required>
+
+      <button type="submit" class="modal-btn">Send via WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+/* ================= DESKTOP SEARCH ================= */
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("focus", () => {
+  resortSection.scrollIntoView({ behavior: "smooth" });
+});
+
+searchInput.addEventListener("input", () => {
+  filterResorts(searchInput.value);
+});
+</script>
+
+<script>
+const modal = document.getElementById("resortModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalLocation = document.getElementById("modalLocation");
+const modalDesc = document.getElementById("modalDesc");
+const modalPrice = document.getElementById("modalPrice");
+const modalMainImage = document.getElementById("modalMainImage");
+const modalThumbs = document.getElementById("modalThumbs");
+
+const resortDetails = document.getElementById("resortDetails");
+const bookingForm = document.getElementById("bookingForm");
+const openBooking = document.getElementById("openBooking");
+const sendWhatsapp = document.getElementById("sendWhatsapp");
+
+let currentResort = {};
+
+// OPEN RESORT MODAL
+document.querySelectorAll(".resort-card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    const images = JSON.parse(card.dataset.images);
+
+    currentResort = {
+      title: card.dataset.title,
+      location: card.dataset.location,
+      price: card.dataset.price
+    };
+
+    modalTitle.textContent = currentResort.title;
+    modalLocation.textContent = "📍 " + currentResort.location;
+    modalDesc.textContent = card.dataset.desc;
+    modalPrice.textContent = currentResort.price;
+
+    modalMainImage.src = images[0];
+    modalThumbs.innerHTML = "";
+
+    images.forEach(img=>{
+      const t = document.createElement("img");
+      t.src = img;
+      t.onclick = ()=> modalMainImage.src = img;
+      modalThumbs.appendChild(t);
+    });
+
+    bookingForm.style.display = "none";
+    resortDetails.style.display = "block";
+
+    modal.style.display = "flex";
+  });
+});
+
+// SWITCH TO BOOKING FORM
+openBooking.onclick = ()=>{
+  resortDetails.style.display = "none";
+  bookingForm.style.display = "block";
+};
+
+// SEND TO WHATSAPP
+sendWhatsapp.onclick = ()=>{
+  const msg = `
+🏨 ${currentResort.title}
+📍 ${currentResort.location}
+💰 ${currentResort.price}
+
+👤 Name: ${bkName.value}
+📞 Contact: ${bkPhone.value}
+📅 Check-in: ${bkCheckin.value}
+📅 Check-out: ${bkCheckout.value}
+👨‍👩‍👧 Type: ${bkType.value}
+👥 Total Members: ${bkMembers.value}
+🧑 Adults (12+): ${bkAdults.value}
+🧒 Kids (6–12): ${bkKids.value}
+🏠 Rooms Needed: ${bkRooms.value}
+`;
+
+  const url = https://wa.me/917907914771?text=${encodeURIComponent(msg)};
+  window.open(url,"_blank");
+};
+
+// CLOSE MODAL
+document.querySelector(".close").onclick = ()=> modal.style.display="none";
+modal.onclick = e => { if(e.target===modal) modal.style.display="none"; };
+
+window.addEventListener("scroll",()=>{
+  navbar.classList.toggle("scrolled",window.scrollY>80);
+});
+
+/* MOBILE MENU */
+const menuToggle=document.getElementById("menuToggle");
+const mobileNav=document.getElementById("mobileNav");
+
+menuToggle.onclick=()=>{
+  mobileNav.style.right =
+    mobileNav.style.right==="0px" ? "-100%" : "0";
+};
+</script>
+
+<script>
+/* ================= MOBILE SEARCH ================= */
+
+const openMobileSearch = document.getElementById("openMobileSearch");
+const closeMobileSearch = document.getElementById("closeMobileSearch");
+const mobileSearch = document.getElementById("mobileSearch");
+const mobileSearchInput = document.getElementById("mobileSearchInput");
+const resortCards = document.querySelectorAll(".resort-card");
+const resortSection = document.getElementById("services");
+
+/* OPEN SEARCH */
+openMobileSearch.onclick = () => {
+  mobileSearch.style.display = "block";
+  mobileSearchInput.focus();
+};
+
+/* CLOSE SEARCH */
+closeMobileSearch.onclick = () => {
+  mobileSearch.style.display = "none";
+  mobileSearchInput.value = "";
+  filterResorts("");
+};
+
+/* SCROLL ON FOCUS */
+mobileSearchInput.addEventListener("focus", () => {
+  resortSection.scrollIntoView({ behavior: "smooth" });
+});
+
+/* FILTER FUNCTION */
+function filterResorts(query){
+  query = query.toLowerCase();
+  resortCards.forEach(card=>{
+    const text =
+      card.dataset.title.toLowerCase() +
+      card.dataset.location.toLowerCase() +
+      card.dataset.desc.toLowerCase() +
+      card.innerText.toLowerCase();
+
+    card.style.display = text.includes(query) ? "block" : "none";
+  });
+}
+
+/* SEARCH WHILE TYPING */
+mobileSearchInput.addEventListener("input", e=>{
+  filterResorts(e.target.value);
+});
+</script>
+
+
+
+</body>
+</html>

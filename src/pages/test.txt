@@ -1,0 +1,179 @@
+import { useEffect, useState } from "react";
+import {
+  FaBars,
+  FaWhatsapp,
+  FaInstagram,
+  FaFacebookF,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+
+export default function App() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const sendWhatsApp = (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const text = `Hello Gowyn 👋
+
+Name: ${f.name.value}
+Email: ${f.email.value}
+Phone: ${f.phone.value}
+
+Message:
+${f.message.value}`;
+
+    window.open(
+      https://wa.me/917907914771?text=${encodeURIComponent(text)},
+      "_blank"
+    );
+  };
+
+  return (
+    <div className="font-poppins bg-[#fafafa] text-gray-800">
+      {/* NAVBAR */}
+      <header
+        className={`fixed top-0 w-full z-50 transition-all ${
+          scrolled ? "bg-white shadow py-3" : "bg-transparent py-6"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-3 text-xl font-semibold">
+            <img src="/gowyn.png" className="h-10" />
+            <span className={scrolled ? "text-black" : "text-white"}>
+              Gowyn
+            </span>
+          </div>
+
+          <nav className="hidden md:flex gap-8">
+            {["home", "services", "about", "contact"].map((id) => (
+              <a
+                key={id}
+                href={#${id}}
+                className={scrolled ? "text-black" : "text-white"}
+              >
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className={`px-6 py-2 rounded-full border ${
+                scrolled ? "text-black" : "text-white"
+              }`}
+            >
+              Book Now
+            </a>
+          </nav>
+
+          <button
+            className={`md:hidden text-2xl ${
+              scrolled ? "text-black" : "text-white"
+            }`}
+            onClick={() => setMenuOpen(true)}
+          >
+            <FaBars />
+          </button>
+        </div>
+      </header>
+
+      {/* MOBILE MENU (SAFE) */}
+      {menuOpen && (
+        <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-6 text-xl">
+          {["home", "services", "about", "contact"].map((id) => (
+            <a key={id} href={#${id}} onClick={() => setMenuOpen(false)}>
+              {id.charAt(0).toUpperCase() + id.slice(1)}
+            </a>
+          ))}
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="px-10 py-3 bg-black text-white rounded-full"
+          >
+            Close
+          </button>
+        </div>
+      )}
+
+      {/* HERO */}
+      <section
+        id="home"
+        className="min-h-screen pt-32 flex flex-col items-center justify-center text-center text-white bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.7)), url('/backgrownd.jpg')",
+        }}
+      >
+        <img src="/logo1.png" className="max-w-md mb-10" />
+        <h1 className="font-playfair text-4xl md:text-6xl">
+          Your Trusted Partner
+          <br />
+          in Hospitality & Travel
+        </h1>
+        <p className="mt-6 max-w-xl opacity-90">
+          Luxury journeys curated with passion and precision
+        </p>
+        <div className="flex gap-4 mt-8 flex-col md:flex-row">
+          <a className="px-10 py-4 bg-black rounded-full">Start Journey</a>
+          <a className="px-10 py-4 bg-white text-black rounded-full">
+            Explore
+          </a>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="py-28 max-w-7xl mx-auto px-6">
+        <h2 className="text-center font-playfair text-4xl mb-12">
+          Our Services
+        </h2>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            "Luxury Resorts",
+            "Honeymoon",
+            "Adventure",
+            "Cab Service",
+          ].map((t) => (
+            <div key={t} className="bg-white rounded-3xl shadow-lg p-6">
+              <h3 className="font-semibold">{t}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="py-28 max-w-7xl mx-auto px-6">
+        <form
+          onSubmit={sendWhatsApp}
+          className="bg-white p-8 rounded-3xl shadow-lg max-w-xl mx-auto space-y-4"
+        >
+          <input name="name" placeholder="Name" className="w-full p-3 border rounded" required />
+          <input name="email" placeholder="Email" className="w-full p-3 border rounded" required />
+          <input name="phone" placeholder="Phone" className="w-full p-3 border rounded" required />
+          <textarea name="message" placeholder="Message" className="w-full p-3 border rounded" required />
+          <button className="w-full py-3 bg-black text-white rounded-full">
+            Send Message
+          </button>
+        </form>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="text-center py-8 bg-white border-t">
+        © 2026 Gowyn. All Rights Reserved.
+      </footer>
+
+      {/* WHATSAPP */}
+      <a
+        href="https://wa.me/917907914771"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl"
+      >
+        <FaWhatsapp />
+      </a>
+    </div>
+  );
+}
