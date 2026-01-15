@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 
 const backgrounds = [
   "/images/WhatsApp Image 2026-01-14 at 19.15.16_76ea5989.jpg",
-  "/backgrownd2.png",
-  "/backgrownd3.png",
+  "/images/backgrownd2.png",
+  "/images/backgrownd3.png",
 ];
 
 export default function HeroSection() {
