@@ -77,12 +77,27 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          <a className="px-10 py-4 bg-black/80 hover:bg-black transition rounded-full backdrop-blur-md shadow-lg">
+          <button
+            onClick={() =>
+              document
+                .getElementById("services")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="px-10 py-4 bg-black/80 hover:bg-black transition rounded-full backdrop-blur-md shadow-lg"
+          >
             Start Journey
-          </a>
-          <a className="px-10 py-4 bg-white text-black hover:bg-gray-100 transition rounded-full shadow-lg">
+          </button>
+
+          <button
+            onClick={() =>
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="px-10 py-4 bg-white text-black hover:bg-gray-100 transition rounded-full shadow-lg"
+          >
             Explore
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>
