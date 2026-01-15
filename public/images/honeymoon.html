@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Honeymoon Packages | Gowyn</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+<style>
+:root{
+  --gold:#c9a24d;
+  --dark:#0f172a;
+  --muted:#6b7280;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(180deg,#f7f8fa,#eef1f5);
+  color:#1f2937;
+}
+
+/* ================= NAVBAR ================= */
+header{
+  position:fixed;top:0;width:100%;height:100px;
+  padding:0 80px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(to bottom,rgba(0,0,0,.35),transparent);
+  transition:.4s;z-index:999;
+}
+header.scrolled{
+  background:#fff;
+  box-shadow:0 12px 40px rgba(0,0,0,.15);
+}
+.logo{display:flex;gap:14px;align-items:center}
+.logo img{height:44px}
+.logo span{font-size:44px;font-weight:600;color:#fff}
+header.scrolled .logo span{color:#000}
+
+nav a{
+  margin-left:34px;
+  text-decoration:none;
+  font-weight:500;
+  color:#fff;
+  position:relative;
+}
+nav a::after{
+  content:"";position:absolute;left:0;bottom:-8px;
+  width:0;height:2px;background:var(--gold);transition:.3s;
+}
+nav a:hover::after{width:100%}
+header.scrolled nav a{color:#000}
+
+/* ================= HERO ================= */
+.hero{
+  height:100vh;
+  background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.8)),
+  url("Honeymoon.png") center/cover;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;color:#fff;padding-top:100px;
+}
+.hero h1{font-family:"Playfair Display";font-size:64px}
+.hero p{margin-top:20px;font-size:18px;max-width:760px}
+
+/* ================= SECTION ================= */
+section{padding:100px 90px}
+.section-title{text-align:center;margin-bottom:70px}
+.section-title h2{
+  font-size:44px;font-family:"Playfair Display";
+}
+.section-title p{color:var(--muted);margin-top:10px}
+
+/* ================= CARDS ================= */
+.resorts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+}
+.resort-card{
+  background:#fff;border-radius:26px;overflow:hidden;
+  box-shadow:0 25px 60px rgba(0,0,0,.12);
+  transition:.4s;cursor:pointer;
+}
+.resort-card:hover{
+  transform:translateY(-14px);
+  box-shadow:0 40px 90px rgba(0,0,0,.25);
+}
+.resort-card img{
+  width:100%;height:250px;object-fit:cover;
+}
+.resort-content{padding:30px}
+.resort-content h3{font-size:21px}
+.resort-content p{font-size:14px;color:var(--muted);margin:10px 0}
+.price{font-size:17px;color:var(--gold);font-weight:600}
+
+.view-btn{
+  margin-top:15px;
+  padding:12px 32px;border-radius:40px;border:none;
+  background:#000;color:#fff;font-size:14px;
+  cursor:pointer;transition:.3s;
+}
+.view-btn:hover{background:var(--gold);color:#000}
+
+/* ================= MODAL ================= */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(6px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px; /* ✅ creates gap from screen edges */
+  z-index:2000;
+}
+
+.modal-box{
+  background:#fff;
+  width:100%;
+  max-width:420px;          /* ✅ mobile card width */
+  max-height:90vh;          /* ✅ never overflow screen */
+  border-radius:22px;
+  padding:18px;
+  overflow-y:auto;          /* ✅ internal scroll */
+  position:relative;
+  animation:modalIn .35s ease;
+}
+
+.close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:34px;
+  height:34px;
+  background:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
+  cursor:pointer;
+}
+
+
+/* GALLERY */
+.modal-gallery img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:16px;
+}
+
+.thumbs{
+  display:flex;
+  gap:10px;
+  margin:12px 0 18px;
+  overflow-x:auto;
+}
+
+.thumbs img{
+  width:62px;
+  height:62px;
+  border-radius:12px;
+  object-fit:cover;
+  flex-shrink:0;
+}
+
+.thumbs img:hover{opacity:1}
+
+/* BOOKING */
+.modal-content input,.modal-content select{
+  width:100%;padding:12px;margin:10px 0;
+  border-radius:10px;border:1px solid #d1d5db;
+}
+.modal-price{color:var(--gold);font-weight:600;margin:14px 0}
+
+.booking-actions{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:18px;
+}
+
+.view-btn{
+  width:100%;
+  text-align:center;
+}
+
+#openBooking{background:#000;color:#fff}
+#sendWhatsapp{background:#25d366;color:#fff}
+
+#contact{
+  text-align:center;
+  padding:50px;
+  border-top:1px solid #ddd;
+  font-size:14px;
+  background:#fff;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  header{padding:0 22px;height:90px}
+  nav{display:none}
+  section{padding:70px 22px}
+  .hero h1{font-size:40px}
+}
+@media(max-width:768px){
+  .modal-box{grid-template-columns:1fr;max-height:90vh;overflow:auto}
+}
+@media(min-width:768px){
+  .modal-box{
+    max-width:900px;
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:30px;
+    padding:32px;
+  }
+}
+
+
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  color:#fff;
+}
+
+header.scrolled .menu-toggle{color:#000}
+
+.mobile-nav{
+  position:fixed;
+  top:100px;
+  right:-100%;
+  width:100%;
+  height:calc(100vh - 100px);
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:40px;
+  transition:.4s ease;
+  z-index:998;
+}
+
+.mobile-nav a{
+  text-decoration:none;
+  font-size:18px;
+  color:#000;
+  margin:16px 0;
+  font-weight:500;
+}
+
+.mobile-nav .book{
+  margin-top:25px;
+  padding:12px 32px;
+  background:#000;
+  color:#fff;
+  border-radius:30px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{display:none}
+  .menu-toggle{display:block}
+}
+</style>
+</head>
+
+<body>
+
+
+<header id="navbar">
+  <div class="logo">
+    <img src="gowyn.png">
+    <span>Gowyn</span>
+  </div>
+
+  <nav>
+    <a href="Gowyn.html">Home</a>
+    <a href="#contact">Services</a>
+    <a href="Gowyn.html#contact">Contact</a>
+    
+  </nav>
+
+  <!-- HAMBURGER -->
+  <div class="menu-toggle" id="menuToggle">☰</div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="Gowyn.html">Home</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="book">Book Now</a>
+</div>
+
+
+<div class="hero">
+  <div>
+    <h1>Honeymoon Packages</h1>
+    <p>Romantic destinations crafted for unforgettable beginnings</p>
+  </div>
+</div>
+
+<section id="packages">
+  <div class="section-title">
+    <h2>Romantic Getaways</h2>
+    <p>Handpicked honeymoon experiences</p>
+  </div>
+
+  <div class="resorts">
+
+    <!-- CARD -->
+        <div class="resort-card"
+      data-title="1 BHK couple villa"
+      data-location="📍Wayanad"
+      data-price="₹12000 / couple"
+      data-desc="candlelight dinner,glass bridge visit,zipline ticket ,semi off road jeep safari,pool with private time."
+      data-images='["30.jpeg","33.jpeg","glass bridge.png","zipline.png","80.png","26.jpeg","85.jpg"]'>
+      <img src="84.jpg">
+      <div class="resort-content">
+        <h3>Standard package</h3>
+        <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+        <p>Two hearts. One perfect escape. </p>
+        <div class="price">From ₹12,000 / couple</div>
+        <button class="view-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="resort-card"
+      data-title="wooden cottege stay"
+      data-location="📍Wayanad"
+      data-price="₹15,000 / couple"
+      data-desc="candlelight dinner,glass bridge visit,zipline ticket ,semi off road jeep safari,pool with private time."
+      data-images='["tree vally.jpeg","24.jpeg","glass bridge.png","zipline.png","80.png","26.jpeg","85.jpg"]'>
+      <img src="83.jpg">
+      <div class="resort-content">
+        <h3>Deluxe packege</h3>
+        <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+        <p>An indulgence called love.</p>
+        <div class="price">From ₹15,000/ couple</div>
+        <button class="view-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="resort-card"
+      data-title="BALI Type VILLA"
+      data-location="📍Wayanad"
+      data-price="₹25,000/ couple"
+      data-desc="private pool villa,floating breack fast, candlelight dinner,glass bridge ticket, zipline ticket,off road jeep safari."
+      data-images='["Amakila.jpeg","52.jpeg","glass bridge.png","zipline.png","80.png","55.jpeg","85.jpg"]'>
+      <img src="82.jpg">
+      <div class="resort-content">
+        <h3>premium package</h3>
+        <p><i class="fa-solid fa-location-dot" style="font-size:15px; color:#e11d48;"></i><span><b>Wayanad</b></span></p>
+        <p>Where romance meets royalty.</p>
+        <div class="price">From ₹25,999 / couple</div>
+        <button class="view-btn">View Details</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<footer id="contact">© 2026 Gowyn. All Rights Reserved.</footer>
+
+<!-- MODAL -->
+<div class="modal" id="resortModal">
+  <div class="modal-box">
+    <span class="close">&times;</span>
+
+    <div class="modal-gallery">
+      <img id="modalMainImage">
+      <div class="thumbs" id="modalThumbs"></div>
+    </div>
+
+    <div class="modal-content">
+      <div id="resortDetails">
+        <h2 id="modalTitle"></h2>
+        <p id="modalLocation"></p>
+        <p id="modalDesc"></p>
+        <div class="modal-price" id="modalPrice"></div>
+
+        <div class="booking-actions">
+          <button class="view-btn" id="openBooking">Book Now</button>
+        </div>
+      </div>
+
+      <div id="bookingForm" style="display:none">
+        <input id="bkName" placeholder="Name">
+        <input id="bkPhone" placeholder="Phone">
+
+        <label>Check-in Date</label>
+        <input id="bkCheckin" type="date">
+
+        <label>Check-out Date</label>
+        <input id="bkCheckout" type="date">
+
+        <select id="bkType"><option>Couple</option></select>
+        <button class="view-btn" id="sendWhatsapp">Send on WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const modal=document.getElementById("resortModal");
+const modalTitle=document.getElementById("modalTitle");
+const modalLocation=document.getElementById("modalLocation");
+const modalDesc=document.getElementById("modalDesc");
+const modalPrice=document.getElementById("modalPrice");
+const modalMainImage=document.getElementById("modalMainImage");
+const modalThumbs=document.getElementById("modalThumbs");
+
+const resortDetails=document.getElementById("resortDetails");
+const bookingForm=document.getElementById("bookingForm");
+const openBooking=document.getElementById("openBooking");
+const sendWhatsapp=document.getElementById("sendWhatsapp");
+
+let current={};
+
+document.querySelectorAll(".resort-card").forEach(card=>{
+  card.onclick=()=>{
+    const imgs=JSON.parse(card.dataset.images);
+    current={title:card.dataset.title,location:card.dataset.location,price:card.dataset.price};
+    modalTitle.textContent=current.title;
+    modalLocation.textContent="📍 "+current.location;
+    modalDesc.textContent=card.dataset.desc;
+    modalPrice.textContent=current.price;
+    modalMainImage.src=imgs[0];
+    modalThumbs.innerHTML="";
+    imgs.forEach(i=>{
+      const t=document.createElement("img");
+      t.src=i;t.onclick=()=>modalMainImage.src=i;
+      modalThumbs.appendChild(t);
+    });
+    bookingForm.style.display="none";
+    resortDetails.style.display="block";
+    modal.style.display="flex";
+  }
+});
+
+openBooking.onclick=()=>{
+  resortDetails.style.display="none";
+  bookingForm.style.display="block";
+};
+
+sendWhatsapp.onclick=()=>{
+  const msg=`🏨 ${current.title}\n📍 ${current.location}\n💰 ${current.price}`;
+  window.open(`https://wa.me/917907914771?text=${encodeURIComponent(msg)}`);
+};
+
+document.querySelector(".close").onclick=()=>modal.style.display="none";
+modal.onclick=e=>{if(e.target===modal)modal.style.display="none"};
+
+window.addEventListener("scroll",()=>{
+  navbar.classList.toggle("scrolled",window.scrollY>80);
+});
+
+/* MOBILE MENU */
+const menuToggle=document.getElementById("menuToggle");
+const mobileNav=document.getElementById("mobileNav");
+
+menuToggle.onclick=()=>{
+  mobileNav.style.right =
+    mobileNav.style.right==="0px" ? "-100%" : "0";
+};
+</script>
+
+</body>
+</html>
