@@ -62,7 +62,7 @@ const cabs = [
   },
   {
     title: "Traveller",
-    image: "/images/traveler.png",
+    image: "/images/travaler.png",
     images: [
  
     ],
@@ -101,7 +101,7 @@ function CabModal({ cab, onClose }) {
     `.trim();
 
     window.open(
-      `https://wa.me/919999999999?text=${encodeURIComponent(message)}`,
+      `https://wa.me/917907914771?text=${encodeURIComponent(message)}`,
       "_blank"
     );
   };

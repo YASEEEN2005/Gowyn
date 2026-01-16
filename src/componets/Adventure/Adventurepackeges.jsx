@@ -87,7 +87,7 @@ function AdventureModal({ item, onClose }) {
     `.trim();
 
     window.open(
-      `https://wa.me/919999999999?text=${encodeURIComponent(message)}`,
+      `https://wa.me/917907914771?text=${encodeURIComponent(message)}`,
       "_blank"
     );
   };

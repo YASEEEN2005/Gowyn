@@ -43,7 +43,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="https://wa.me/917907914771"
               className={`px-6 py-2 rounded-full border ${
                 scrolled ? "text-black border-black" : "text-white border-white"
               }`}

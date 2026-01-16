@@ -6,17 +6,50 @@ import {
   FaInstagram,
   FaFacebookF,
 } from "react-icons/fa";
+import { useState } from "react";
+
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const sendToWhatsApp = (e) => {
+    e.preventDefault();
+
+    const whatsappNumber = "917907914771"; // 👉 Your WhatsApp number (country code + number)
+
+    const text = `
+Hello Gowyn 👋
+
+👤 Name: ${formData.name}
+📧 Email: ${formData.email}
+📞 Phone: ${formData.phone}
+
+💬 Message:
+${formData.message}
+    `;
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      text
+    )}`;
+
+    window.open(url, "_blank");
+  };
   return (
     <section className="pb-12  bg-white" id="contact">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-20">
           <h2 className="font-playfair text-5xl font-bold">Contact Us</h2>
-          <p className="text-gray-500 mt-3">
-            Plan your next journey today
-          </p>
+          <p className="text-gray-500 mt-3">Plan your next journey today</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-14">
@@ -50,7 +83,7 @@ export default function Contact() {
             <div className="flex gap-4 mb-8">
               <motion.a
                 whileHover={{ scale: 1.15 }}
-                href="#"
+                href="https://www.instagram.com/gowyn_tours_.in?igsh=dDRhdDQ0OGdhdm1y"
                 className="h-12 w-12 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 flex items-center justify-center text-white"
               >
                 <FaInstagram />
@@ -58,7 +91,7 @@ export default function Contact() {
 
               <motion.a
                 whileHover={{ scale: 1.15 }}
-                href="#"
+                href="https://www.facebook.com/share/1F5ARC6uPn/?mibextid=wwXIfr"
                 className="h-12 w-12 rounded-full bg-blue-600 flex items-center justify-center text-white"
               >
                 <FaFacebookF />
@@ -82,7 +115,7 @@ export default function Contact() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT CARD (FORM) */}
+          {/* ================= RIGHT CARD (FORM) ================= */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -90,34 +123,47 @@ export default function Contact() {
             viewport={{ once: true }}
             className="bg-white rounded-3xl shadow-2xl p-10"
           >
-            <form className="space-y-6">
+            <form onSubmit={sendToWhatsApp} className="space-y-6">
               <input
                 type="text"
+                name="name"
                 placeholder="Full Name"
+                required
+                onChange={handleChange}
                 className="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-black transition"
               />
 
               <input
                 type="email"
+                name="email"
                 placeholder="Email Address"
+                required
+                onChange={handleChange}
                 className="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-black transition"
               />
 
               <input
                 type="text"
+                name="phone"
                 placeholder="Phone Number"
+                required
+                onChange={handleChange}
                 className="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-black transition"
               />
 
               <textarea
                 rows="5"
+                name="message"
                 placeholder="Your Message"
+                required
+                onChange={handleChange}
                 className="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-black transition"
               ></textarea>
 
               <motion.button
+                type="submit"
                 whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileTap={{ scale: 0.97 }}
                 className="w-full bg-black text-white py-4 rounded-full font-semibold tracking-wide"
               >
                 Send Message

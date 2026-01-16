@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar({ setSearchTerm }) {
   const [scrolled, setScrolled] = useState(false);
@@ -20,6 +21,13 @@ export default function Navbar({ setSearchTerm }) {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const MENU_ITEMS = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "#resorts" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
 
   return (
     <>
@@ -101,44 +109,99 @@ export default function Navbar({ setSearchTerm }) {
       </header>
 
       {/* ================= MOBILE SEARCH ================= */}
-      {mobileSearch && (
-        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-6">
-          <div className="relative w-full max-w-md">
-            <input
-              autoFocus
-              type="text"
-              placeholder="Search resorts..."
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onFocus={scrollToResorts}
-              className="w-full rounded-full px-6 py-3 text-black focus:outline-none"
-            />
-            <button
-              onClick={() => setMobileSearch(false)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-600"
-            >
-              <FaTimes />
-            </button>
-          </div>
-        </div>
-      )}
+     <AnimatePresence>
+  {mobileSearch && (
+    <motion.div
+      className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {/* TOP SEARCH BAR */}
+      <motion.div
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -80, opacity: 0 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="bg-white rounded-b-3xl shadow-2xl px-5 pt-5 pb-6"
+      >
+        <div className="flex items-center gap-3">
+          {/* Search Icon */}
+          <FaSearch className="text-gray-400 text-lg" />
 
-      {/* ================= MOBILE MENU ================= */}
-      {menuOpen && (
-        <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-6 text-xl">
-          {["home", "services", "about", "contact"].map((id) => (
-            <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>
-              {id.charAt(0).toUpperCase() + id.slice(1)}
-            </a>
-          ))}
+          {/* Input */}
+          <input
+            autoFocus
+            type="text"
+            placeholder="Search resorts, villas, stays..."
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onFocus={scrollToResorts}
+            className="flex-1 bg-transparent text-base text-gray-800 placeholder-gray-400 focus:outline-none"
+          />
 
+          {/* Close */}
           <button
-            onClick={() => setMenuOpen(false)}
-            className="px-10 py-3 bg-black text-white rounded-full"
+            onClick={() => setMobileSearch(false)}
+            className="text-gray-500 hover:text-black transition"
           >
-            Close
+            <FaTimes className="text-xl" />
           </button>
         </div>
-      )}
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+      {/* ================= MOBILE MENU ================= */}
+      ;
+
+<AnimatePresence>
+  {menuOpen && (
+    <motion.div
+      className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.div
+        initial={{ y: 60, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 60, opacity: 0 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="bg-white h-full rounded-t-3xl shadow-2xl flex flex-col items-center justify-center gap-7 text-xl font-medium"
+      >
+        {MENU_ITEMS.map(({ label, href }) =>
+          href.startsWith("#") ? (
+            <a
+              key={label}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-[#c9a24d] transition"
+            >
+              {label}
+            </a>
+          ) : (
+            <Link
+              key={label}
+              to={href}
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-[#c9a24d] transition"
+            >
+              {label}
+            </Link>
+          )
+        )}
+
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="mt-10 px-12 py-3 rounded-full bg-black text-white text-base hover:bg-gray-900 transition"
+        >
+          Close Menu
+        </button>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </>
   );
 }

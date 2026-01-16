@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="flex gap-5">
             <motion.a
               whileHover={{ scale: 1.15 }}
-              href="#"
+              href="https://www.instagram.com/gowyn_tours_.in?igsh=dDRhdDQ0OGdhdm1y"
               className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-black hover:text-white transition"
             >
               <FaInstagram />
@@ -35,7 +35,7 @@ export default function Footer() {
 
             <motion.a
               whileHover={{ scale: 1.15 }}
-              href="#"
+              href="https://www.facebook.com/share/1F5ARC6uPn/?mibextid=wwXIfr"
               className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-black hover:text-white transition"
             >
               <FaFacebookF />
@@ -43,7 +43,7 @@ export default function Footer() {
 
             <motion.a
               whileHover={{ scale: 1.15 }}
-              href="#"
+              href="https://wa.me/917907914771"
               className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-black hover:text-white transition"
             >
               <FaWhatsapp />
