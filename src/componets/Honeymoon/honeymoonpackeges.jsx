@@ -52,7 +52,7 @@ images: [
 images: [
   "/images/Amakila.jpeg",
   "/images/52.jpeg",
-  "/images/glass-bridge.png",
+  "/images/glass bridge.png",
   "/images/zipline.png",
   "/images/80.png",
   "/images/55.jpeg",
