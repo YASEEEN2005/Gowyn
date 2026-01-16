@@ -429,7 +429,7 @@ useEffect(() => {
         });
 
   return (
-    <section id="resorts" className="py-32 bg-gray-50">
+    <section id="resorts" className=" bg-gray-50">
               <div className="text-center mb-20">
           <h2 className="font-playfair text-4xl md:text-5xl font-semibold">
             Our Resort Collection

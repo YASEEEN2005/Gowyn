@@ -109,10 +109,10 @@ export default function Navbar({ setSearchTerm }) {
       </header>
 
       {/* ================= MOBILE SEARCH ================= */}
-     <AnimatePresence>
+<AnimatePresence>
   {mobileSearch && (
     <motion.div
-      className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+      className="fixed top-0 left-0 right-0 z-50 pointer-events-none"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -123,7 +123,15 @@ export default function Navbar({ setSearchTerm }) {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: -80, opacity: 0 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className="bg-white rounded-b-3xl shadow-2xl px-5 pt-5 pb-6"
+        className="
+          pointer-events-auto
+          mx-3 mt-3
+          bg-white/95
+          backdrop-blur-md
+          rounded-2xl
+          shadow-xl
+          px-5 pt-4 pb-4
+        "
       >
         <div className="flex items-center gap-3">
           {/* Search Icon */}
@@ -151,6 +159,7 @@ export default function Navbar({ setSearchTerm }) {
     </motion.div>
   )}
 </AnimatePresence>
+
 
       {/* ================= MOBILE MENU ================= */}
       ;
