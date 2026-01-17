@@ -34,7 +34,7 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <motion.h2
-          className="text-center font-playfair text-4xl mb-3"
+          className="font-playfair text-4xl font-bold text-center mb-3"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
